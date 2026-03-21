@@ -1,0 +1,22 @@
+const int SHIFT_UP_PIN = 2;
+const int SHIFT_DOWN_PIN = 3;
+const int HANDBRAKE_PIN = 4;
+
+void setup() {
+  pinMode(SHIFT_UP_PIN, INPUT_PULLUP);
+  pinMode(SHIFT_DOWN_PIN, INPUT_PULLUP);
+  pinMode(HANDBRAKE_PIN, INPUT_PULLUP);
+
+  Serial.begin(115200);
+}
+
+void loop() {
+  Serial.print("UP: ");
+  Serial.print(digitalRead(SHIFT_UP_PIN));
+  Serial.print(" | DOWN: ");
+  Serial.print(digitalRead(SHIFT_DOWN_PIN));
+  Serial.print(" | HB: ");
+  Serial.println(digitalRead(HANDBRAKE_PIN));
+
+  delay(100);
+}
