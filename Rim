@@ -1,0 +1,11 @@
+const int BUTTON_PIN = 5;
+
+void setup() {
+  pinMode(BUTTON_PIN, INPUT_PULLUP);
+  Serial.begin(115200);
+}
+
+void loop() {
+  Serial.println(digitalRead(BUTTON_PIN));
+  delay(100);
+}
