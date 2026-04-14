@@ -1,0 +1,65 @@
+const int upPin = 3;
+const int downPin = 4;
+const int macro1Pin = 5;
+const int macro2Pin = 6;
+
+bool upLocked = false;
+bool downLocked = false;
+bool macro1Locked = false;
+bool macro2Locked = false;
+
+void setup() {
+  pinMode(upPin, INPUT_PULLUP);
+  pinMode(downPin, INPUT_PULLUP);
+  pinMode(macro1Pin, INPUT_PULLUP);
+  pinMode(macro2Pin, INPUT_PULLUP);
+
+  Serial.begin(9600);
+}
+
+void loop() {
+  bool upState = digitalRead(upPin);
+  bool downState = digitalRead(downPin);
+  bool macro1State = digitalRead(macro1Pin);
+  bool macro2State = digitalRead(macro2Pin);
+
+  // UP
+  if (upState == LOW && !upLocked) {
+    Serial.println("UP");
+    upLocked = true;
+    delay(20);
+  }
+  if (upState == HIGH) {
+    upLocked = false;
+  }
+
+  // DOWN
+  if (downState == LOW && !downLocked) {
+    Serial.println("DOWN");
+    downLocked = true;
+    delay(20);
+  }
+  if (downState == HIGH) {
+    downLocked = false;
+  }
+
+  // MACRO 1
+  if (macro1State == LOW && !macro1Locked) {
+    Serial.println("MACRO 1");
+    macro1Locked = true;
+    delay(20);
+  }
+  if (macro1State == HIGH) {
+    macro1Locked = false;
+  }
+
+  // MACRO 2
+  if (macro2State == LOW && !macro2Locked) {
+    Serial.println("MACRO 2");
+    macro2Locked = true;
+    delay(20);
+  }
+  if (macro2State == HIGH) {
+    macro2Locked = false;
+  }
+}
